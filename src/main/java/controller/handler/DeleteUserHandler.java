@@ -19,8 +19,10 @@ public class DeleteUserHandler extends RequestHandler {
 		String keuze = request.getParameter("id");
 		shop.deletePerson(request.getParameter("id"));
 		request.setAttribute("users", shop.getPersons());
+		request.getSession()
+				.invalidate();
 
-		return "Controller?action=userOverview";
+		return "index.jsp";
 	}
 
 }

@@ -36,6 +36,11 @@ public class AddProductHandler extends RequestHandler {
 		} catch (DomainException e) {
 			errors.add(e.getMessage());
 		}
+		try {
+			p.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+		} catch(DomainException e){
+			errors.add(e.getMessage());
+		}
 
 		if (errors.isEmpty()) {
 			shop.addProduct(p);

@@ -16,8 +16,6 @@ public class Cart {
 	       int i = productsInCart.get(product);
 	       productsInCart.put(product, ++i);
         }
-
-        System.out.println(productsInCart);
     }
 
     public void deleteProduct(Product product){
@@ -33,11 +31,12 @@ public class Cart {
     }
 
     public Map<Product, Integer> getCart(){
+        System.out.print("what ?");
 	    return productsInCart;
     }
 
-    public int totalPrice(){
-	    int totalPrice = 0;
+    public double totalPrice(){
+	    double totalPrice = 0;
 
 	    for(Product product : productsInCart.keySet()){
 	        totalPrice += product.getPrice() * productsInCart.get(product);
@@ -45,8 +44,4 @@ public class Cart {
 
 	    return totalPrice;
     }
-
-
-
-
 }

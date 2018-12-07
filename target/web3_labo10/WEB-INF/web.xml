@@ -17,11 +17,11 @@
   </context-param>
   <context-param>
     <param-name>user</param-name>
-    <param-value>r0683311</param-value>
+    <param-value>xxxxxxx</param-value>
   </context-param>
   <context-param>
     <param-name>password</param-name>
-    <param-value>Ikbendank5</param-value>
+    <param-value>xxxxxx</param-value>
   </context-param>
   <context-param>
     <param-name>currentSchema</param-name>

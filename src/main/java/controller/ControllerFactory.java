@@ -10,6 +10,7 @@ public class ControllerFactory {
 
     private RequestHandler createHandler(String handlerName, ShopService model) {
         RequestHandler handler = null;
+
         try {
             handlerName = handlerName.substring(0, 1).toUpperCase() + handlerName.substring(1);
             Class<?> handlerClass = Class.forName("controller.handler."+ handlerName + "Handler");

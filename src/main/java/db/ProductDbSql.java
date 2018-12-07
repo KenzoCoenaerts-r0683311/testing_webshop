@@ -17,7 +17,7 @@ public class ProductDbSql implements ProductDB {
 	private Connection connection;
 	private Statement statement;
 	public ProductDbSql(Properties properties) {
-		String url;
+        String url;
 		try {
 			Class.forName("org.postgresql.Driver");
 			url = properties.getProperty("url");
@@ -34,7 +34,7 @@ public class ProductDbSql implements ProductDB {
 		} catch (SQLException e) {
 			throw new DbException("createStatement failed");
 		}
-	}
+    }
 		
 	@Override
 	public Product get(int id) {
@@ -67,8 +67,9 @@ public class ProductDbSql implements ProductDB {
 				String name = result.getString("name");
 				String description = result.getString("description");
 				double prijs = result.getDouble("prijs");
+				int quantity = result.getInt("quantity");
 				
-				product = new Product(prdId, name, description, prijs );
+				product = new Product(prdId, name, description, prijs, quantity );
 			} 
 		} catch (NumberFormatException | SQLException e) {
 			throw new DbException();
@@ -102,8 +103,9 @@ public class ProductDbSql implements ProductDB {
 				String name = result.getString("name");
 				String description = result.getString("description");
 				double prijs = result.getDouble("prijs");
+				int quantity = result.getInt("quantity");
 				
-				Product p = new Product(id, name, description, prijs );
+				Product p = new Product(id, name, description, prijs, quantity );
 				productList.add(p);
 			}
 		} catch (NumberFormatException | SQLException e) {
@@ -116,7 +118,7 @@ public class ProductDbSql implements ProductDB {
 	@Override
 	public void add(Product p) {
 		PreparedStatement statement;
-		String sql = "INSERT INTO product (name, description, prijs) VALUES (?,?,?)";
+		String sql = "INSERT INTO product (name, description, prijs, quantity) VALUES (?,?,?, ?)";
 		
 		try {
 			statement = connection.prepareStatement(sql);
@@ -141,8 +143,13 @@ public class ProductDbSql implements ProductDB {
 		} catch (SQLException e1) {
 			throw new DbException("add product: setDouble 3 => p.getPrice() failed");
 		}
-		
-		try {
+        try {
+            statement.setInt(4, p.getQuantity());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
 			statement.execute();
 		} catch (SQLException e1) {
 			throw new DbException("add product: execute failed " + e1.toString());
@@ -152,7 +159,7 @@ public class ProductDbSql implements ProductDB {
 	@Override
 	public void update(Product p) {
 		PreparedStatement statement;
-		String sql = "UPDATE product SET name=?, description=?, prijs=? WHERE id=?";
+		String sql = "UPDATE product SET name=?, description=?, prijs=?, quantity=? WHERE id=?";
 		
 		try {
 			statement = connection.prepareStatement(sql);
@@ -177,9 +184,15 @@ public class ProductDbSql implements ProductDB {
 		} catch (SQLException e1) {
 			throw new DbException("add product: setDouble 3 => p.getPrice() failed");
 		}
-		
+
+        try {
+            statement.setDouble(4, p.getQuantity());
+        } catch (SQLException e1) {
+            throw new DbException("add product: setDouble 3 => p.getPrice() failed");
+        }
+
 		try {
-			statement.setInt(4, p.getProductId());
+			statement.setInt(5, p.getProductId());
 		} catch (SQLException e1) {
 			throw new DbException("add product: setDouble 3 => p.getPrice() failed");
 		}

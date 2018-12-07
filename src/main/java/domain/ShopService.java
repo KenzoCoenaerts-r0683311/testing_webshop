@@ -4,18 +4,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import db.PersonDB;
-import db.PersonDbSql;
-import db.ProductDB;
-import db.ProductDbSql;
+import db.*;
 
 public class ShopService {
 	private PersonDB personDb;
 	private ProductDB productDb;
 
 	public ShopService(Properties properties) {
-		personDb = new PersonDbSql(properties);
-		productDb = new ProductDbSql(properties);
+		//personDb = new PersonDbSql(properties);
+		//productDb = new ProductDbSql(properties);
+	    personDb = new PersonDbInMemory();
+	    productDb = new ProductDbInMemory();
 	}
 
 	// personDb methods

@@ -37,7 +37,7 @@ public class AddUserHandler extends RequestHandler {
         }
 
         try {
-            p.setRole(Role.CUSTOMER);
+            p.setRole(Role.ADMIN);
         } catch (IllegalArgumentException e) {
             errors.add(e.getMessage());
         }

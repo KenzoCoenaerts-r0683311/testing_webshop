@@ -10,10 +10,7 @@ import domain.Product;
 public class ProductDbInMemory implements ProductDB {
 	private Map<Integer, Product> records = new HashMap<Integer, Product>();
 	
-	public ProductDbInMemory () {
-		Product rose = new Product("Rose", "Thorny plant", 2.25);
-		add(rose);
-	}
+	public ProductDbInMemory () {}
 	
 	public Product get(int id){
 		if(id < 0){

@@ -17,7 +17,7 @@ public class Person {
 	private String lastName;
 	private String salt;
 	private Role role;
-	private Cart cart;
+	private Cart cart = new Cart();
 
 	public Person(String userid, String email, String password, String firstName, String lastName, Role role) {
 		setUserid(userid);
@@ -26,7 +26,6 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
-        cart = new Cart();
 	}
 	
 	public Person() {
@@ -40,6 +39,7 @@ public class Person {
 		if(userid.isEmpty()){
 			throw new IllegalArgumentException("No userid given");
 		}
+
 		this.userid = userid;
 	}
 
@@ -197,10 +197,11 @@ public class Person {
     }
 
     public Map<Product, Integer> getCartInfo() {
+	    System.out.print("okay");
         return cart.getCart();
     }
 
-    public int totalPrice(){
+    public double totalPrice(){
 	    return cart.totalPrice();
     }
 }

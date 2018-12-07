@@ -5,21 +5,31 @@ public class Product {
 	private String name;
 	private String description;
 	private double price;
+	private int quantity;
 
 	public Product() {}
 
-	public Product(int productId, String name, String description, double d ) {
-		this(name, description, d);
+	public Product(int productId, String name, String description, double d, int quantity ) {
+	    this(name, description, d, quantity);
 		setProductId(productId);
 		//setName(name);
 		//setDescription(description);
 		//setPrice(d);
 	}
 
-	public Product(String name, String description, double d) {
+	public Product(String name, String description, double d, int quantity) {
 		setName(name);
 		setDescription(description);
 		setPrice(d);
+		setQuantity(quantity);
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public int getQuantity(){
+		return this.quantity;
 	}
 
 	public int getProductId() {
@@ -79,7 +89,7 @@ public class Product {
     @Override
     public int hashCode()
     {
-        return name.hashCode();
+        return productId + name.hashCode() + description.hashCode();
     }
 
     @Override

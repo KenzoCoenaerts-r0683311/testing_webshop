@@ -15,12 +15,15 @@ public class ShopingCartHandler extends RequestHandler {
     @Override
     public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
+
+        if(session.getAttribute("user") == null){
+            return "index.jsp";
+        }
+
         Person p = (Person) session.getAttribute("user");
         shop = super.getShopService();
-        System.out.println(p.getCartInfo());
         request.setAttribute("cartInfo", p.getCartInfo());
         request.setAttribute("totalPrice", p.totalPrice());
         return "shopingCart.jsp";
     }
-
 }

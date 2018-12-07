@@ -37,6 +37,10 @@
 				<label for="price">price</label> <input id="price" name="price"
 					type="text" />
 			</p>
+			<p>
+				<label for="quantity">quantity</label> <input id="quantity" name="quantity"
+														type="number" />
+			</p>
 			<input type="submit" />
 		</form>
 		<jsp:include page="footer.jsp">
