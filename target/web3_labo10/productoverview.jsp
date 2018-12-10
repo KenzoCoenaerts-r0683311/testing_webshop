@@ -20,7 +20,9 @@
 				<th>name</th>
 				<th>description</th>
 				<th>price</th>
+				<th>quantity</th>
                 <th>add to cart</th>
+
 				<th>delete</th>
 			</tr>
 			<c:forEach var="product" items="${products}">
@@ -37,6 +39,7 @@
 
 					<td><c:out value="${product.description}"/></td>
 					<td><c:out value="${product.price}"/></td>
+					<td><c:out value="${product.quantity}"/></td>
 					<td><a href="Controller?action=addProductToCart&id=<c:out value='${product.productId}'/>">add to cart</a></td>
 
                     <c:if test="${person.userid == user.userid || user.role == 'ADMIN'}">
