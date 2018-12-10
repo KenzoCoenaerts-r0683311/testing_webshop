@@ -12,6 +12,7 @@ public class Cart {
 	public void addProduct(Product product){
 	    if(!productsInCart.containsKey(product)){
 	        productsInCart.put(product, 1);
+	        product.setQuantity(product.getQuantity()-1);
         } else {
 	       int i = productsInCart.get(product);
 	       productsInCart.put(product, ++i);
