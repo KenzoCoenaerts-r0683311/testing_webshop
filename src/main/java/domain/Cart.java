@@ -20,6 +20,7 @@ public class Cart {
     }
 
     public void deleteProduct(Product product){
+	    product.setQuantity(product.getQuantity()+1);
 	    if(productsInCart.get(product) == 0){
             productsInCart.remove(product);
         } else {
