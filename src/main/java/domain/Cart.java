@@ -46,4 +46,8 @@ public class Cart {
 
 	    return totalPrice;
     }
+
+    public void emptycart() {
+	    productsInCart = new HashMap<>();
+    }
 }

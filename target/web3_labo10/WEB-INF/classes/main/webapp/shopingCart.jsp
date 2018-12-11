@@ -32,8 +32,6 @@
             <caption>shoping cart</caption>
         </table>
         <p>total price: <c:out value="${totalPrice}"/></p>
-
-        <a href="Controller?action=EmptyCart">Empty Cart</a>
     </main>
     <jsp:include page="footer.jsp">
         <jsp:param name="page" value="productOverview" />

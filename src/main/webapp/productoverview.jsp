@@ -47,6 +47,8 @@
                     </c:if>
 				</tr>
 			</c:forEach>
+
+
 			<caption>Users Overview</caption>
 		</table>
 		</main>

@@ -204,4 +204,8 @@ public class Person {
     public double totalPrice(){
 	    return cart.totalPrice();
     }
+
+    public void emptycart() {
+		cart.emptycart();
+    }
 }
