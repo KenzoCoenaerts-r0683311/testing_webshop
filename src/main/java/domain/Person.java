@@ -197,7 +197,6 @@ public class Person {
     }
 
     public Map<Product, Integer> getCartInfo() {
-	    System.out.print("okay");
         return cart.getCart();
     }
 

@@ -20,6 +20,8 @@ public class DeleteProductFromCartHandler extends RequestHandler {
         Person p = (Person) session.getAttribute("user");
         int productID = Integer.parseInt(request.getParameter("id"));
         Product product = shop.getProduct(productID);;
+        product.setQuantity(product.getQuantity() + 1);
+        shop.updateProduct(product);
         p.deleteFromCart(product);
 
         return "Controller?action=shopingCart";

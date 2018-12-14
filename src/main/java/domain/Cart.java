@@ -12,7 +12,6 @@ public class Cart {
 	public void addProduct(Product product){
 	    if(!productsInCart.containsKey(product)){
 	        productsInCart.put(product, 1);
-	        product.setQuantity(product.getQuantity()-1);
         } else {
 	       int i = productsInCart.get(product);
 	       productsInCart.put(product, ++i);
@@ -20,7 +19,6 @@ public class Cart {
     }
 
     public void deleteProduct(Product product){
-	    product.setQuantity(product.getQuantity()+1);
 	    if(productsInCart.get(product) == 0){
             productsInCart.remove(product);
         } else {
@@ -33,7 +31,6 @@ public class Cart {
     }
 
     public Map<Product, Integer> getCart(){
-        System.out.print("what ?");
 	    return productsInCart;
     }
 

@@ -33,7 +33,7 @@
         </table>
         <p>total price: <c:out value="${totalPrice}"/></p>
 
-        <a href="Controller?action=EmptyCart">Empty Cart</a>
+        <button><a href="Controller?action=EmptyCart">Empty Cart</a></button>
     </main>
     <jsp:include page="footer.jsp">
         <jsp:param name="page" value="productOverview" />

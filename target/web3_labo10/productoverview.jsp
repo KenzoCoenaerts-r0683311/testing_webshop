@@ -26,6 +26,7 @@
 				<th>delete</th>
 			</tr>
 			<c:forEach var="product" items="${products}">
+                <c:if test="${product.quantity > 0}">
 				<tr>
 					<td><c:out value="${product.productId}"/></td>
                     <c:choose>
@@ -46,6 +47,7 @@
 					    <td><a href="Controller?action=deleteProduct&id=<c:out value='${product.productId}'/>"><c:out value="delete"/></a></td>
                     </c:if>
 				</tr>
+                </c:if>
 			</c:forEach>
 
 

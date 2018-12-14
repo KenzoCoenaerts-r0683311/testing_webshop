@@ -19,7 +19,10 @@ public class AddProductToCartHandler extends RequestHandler {
         HttpSession session = request.getSession();
         Person p = (Person) session.getAttribute("user");
         int productID = Integer.parseInt(request.getParameter("id"));
-        Product product = shop.getProduct(productID);;
+        Product product = shop.getProduct(productID);
+        product.setQuantity(product.getQuantity() - 1);
+        shop.updateProduct(product);
+        System.out.print(product.getQuantity());
         p.addToCart(product);
 
         return "Controller?action=productOverview";

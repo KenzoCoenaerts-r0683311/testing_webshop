@@ -11,10 +11,10 @@ public class ShopService {
 	private ProductDB productDb;
 
 	public ShopService(Properties properties) {
-		//personDb = new PersonDbSql(properties);
-		//productDb = new ProductDbSql(properties);
-	    personDb = new PersonDbInMemory();
-	    productDb = new ProductDbInMemory();
+		personDb = new PersonDbSql(properties);
+		productDb = new ProductDbSql(properties);
+	    //personDb = new PersonDbInMemory();
+	    //productDb = new ProductDbInMemory();
 	}
 
 	// personDb methods
